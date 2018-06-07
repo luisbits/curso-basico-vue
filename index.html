@@ -8,9 +8,21 @@
 </head>
 <body>
     <div id="app">
-        <button v-on:click="sumar">Sumar 1</button>
-        <button v-on:click="restar">Restar 1</button>
-        El contador está en {{ contador }}
+        <input type="text" name="nombre" v-model="nombre" placeholder="Ingresa tu nombre...">
+        <p>Tu nombre en mayúsculas es: {{ nombre | uppercase }}</p>
+
+        <form @submit.prevent="submit">
+            <h2>¿Cuáles son tus cursos favoritos?</h2>
+            <input v-model="cursos" type="checkbox" id="vue" value="vue">
+            <label for="vue">Curso de Vue.js</label>
+            <input v-model="cursos" type="checkbox" id="seo" value="seo">
+            <label for="seo">Curso de SEO</label>
+            <input v-model="cursos" type="checkbox" id="react" value="react">
+            <label for="seo">Curso de React</label>
+            <input v-model="cursos" type="checkbox" id="growth" value="growth">
+            <label for="seo">Curso de Growth Marketing</label>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -18,16 +30,18 @@
         let app = new Vue({
             el: '#app',
             data: {
-                contador: 0
+                nombre: '',
+                cursos: []
+            },
+            filters: {
+                uppercase: function (str) {
+                    return str.toUpperCase()
+                }
             },
             methods: {
-                sumar: function () {
-                    this.contador++;
-                },
-                restar: function () {
-                    if (this.contador >= 1) {
-                        this.contador--;
-                    }
+                submit: function () {
+                    console.log('Se ejecuta el método submit')
+                    console.log(this.cursos)
                 }
             }
         })
