@@ -8,8 +8,14 @@
 </head>
 <body>
     <div id="app">
-        Hola {{ nombre }}
-        <a :href="url" target="_blank">Ir a {{ pagina }}</a>
+        <div v-show="mostrar">
+            <h1>Este es mi título</h1>
+            <h2>Este es mi subtítulo</h2>
+            <a :href="url" target="_blank">Ir a {{ pagina }}</a>
+        </div>
+        <div v-show="!mostrar">
+            Esto está oculto!
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -17,9 +23,9 @@
         let app = new Vue({
             el: '#app',
             data: {
-                nombre: 'Luis',
                 url: 'https://google.com',
-                pagina: 'Google'
+                pagina: 'Google',
+                mostrar: true
             }
         })
     </script>
