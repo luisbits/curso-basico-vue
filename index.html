@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Curso Vue.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="app">
+        Hola {{ nombre }}
+        <a :href="url" target="_blank">Ir a {{ pagina }}</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                nombre: 'Luis',
+                url: 'https://google.com',
+                pagina: 'Google'
+            }
+        })
+    </script>
+</body>
+</html>
